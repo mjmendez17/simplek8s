@@ -1,0 +1,13 @@
+apiVersion: v1 #version 1 leads to different sets of configs/objects we can use
+kind: Pod # POD IS THE TYPE OF OBJECT THAT WE WANT TO MAKE
+metadata:
+  name: client-pod
+  labels:
+    component: web
+
+spec:
+  containers:
+    - name: client
+      image: mjmendez17/multi-client
+      ports:
+        - containerPort: 3000 #we want to expose this port 3000 to the outside world

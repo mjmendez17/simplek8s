@@ -1,0 +1,15 @@
+#AS IN KUBERNETES THE PORTS (NETWORKING PART) MUST HAVE AN INDIVIDUAL CONFIG FILE :
+apiVersion: v1 #version 1 leads to different sets of configs/objects we can use
+kind: Service # SERVICE IS THE TYPE OF OBJECT THAT WE WANT TO MAKE, IN THIS CASE FOR PORTS
+metadata: 
+  name: client-node-port
+
+spec:
+  type: NodePort #Exposes a container to the outside world (only good for dev purposes), IS THE NUMBER WE ARE GONNA TEST/TRY IN THE BROWSER
+  ports:
+    - ports: 3050
+    targetPort: 3000
+    nodePort: 31515
+
+  selector:
+    component: web # HAS TO BE NAMED EQUAL TO COMPONENT IN "CLIENT-POD"
